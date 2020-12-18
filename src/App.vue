@@ -4,7 +4,7 @@
       <h1>Хвилинка тролінгу</h1>
       <p style="font-size: 1.5rem">{{ topText }}</p>
       <h1 v-if="nayobCount !== 2" style="font-size: 4rem">{{ showText ? text : countDown }}</h1>
-      <img v-if="nayobCount < 2 && !showText" src="https://media.giphy.com/media/cklPOHnHepdwBLRnQp/giphy.gif" />
+      <img style="width: 320px" v-if="nayobCount < 2 && !showText" src="https://media.giphy.com/media/cklPOHnHepdwBLRnQp/giphy.gif" />
       <span style="display: block; margin-bottom: 1rem" v-if="nayobCount === 1 && showText">Для особо одаренных - одна кнопка)</span>
       <div v-if="showInput">
         <input style="padding: 1rem 2rem; font-size: 1rem" v-model="code" />
@@ -17,7 +17,7 @@
     <div v-if="success" class="block">
       <h1>Вітаю)</h1>
       <p v-if="envy">Досі не знаєш, що відбувається? Ок. тримай...</p>
-      <img src="https://media.giphy.com/media/9YlhdI9SSP0Qw/giphy.gif" />
+      <img style="width: 320px" src="https://media.giphy.com/media/9YlhdI9SSP0Qw/giphy.gif" />
     </div>
   </div>
 </template>
@@ -44,7 +44,7 @@
     },
     methods: {
       countDownTimer() {
-        if(this.countDown !== 3) {
+        if(this.countDown !== 20) {
           setTimeout(() => {
             this.showText = false;
             this.countDown += 1
@@ -60,10 +60,10 @@
 
         if (this.nayobCount === 0) {
           this.showText = false;
-          this.topText = 'Ти вибрав хренову кнопку. Чекай ще раз)';
+          this.topText = 'Ти вибрав погану кнопку. Чекай ще раз)';
           this.countDownTimer();
         } else if (this.nayobCount === 1) {
-          this.topText = 'Маю переконатись, що це ти. Введи код, який знаходиться в тебе під столом'
+          this.topText = 'Маю переконатись, що це ти. Введи код, який знаходиться під кавовою машинкою'
           this.countDown = null;
           this.showInput = true;
         } else if (this.nayobCount === 2) {
