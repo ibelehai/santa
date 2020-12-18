@@ -44,7 +44,7 @@
     },
     methods: {
       countDownTimer() {
-        if(this.countDown !== 20) {
+        if(this.countDown !== 45) {
           setTimeout(() => {
             this.showText = false;
             this.countDown += 1
