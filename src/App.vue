@@ -4,9 +4,10 @@
       <h1>Хвилинка тролінгу</h1>
       <p style="font-size: 1.5rem">{{ topText }}</p>
       <h1 v-if="nayobCount !== 2" style="font-size: 4rem">{{ showText ? text : countDown }}</h1>
+      <img v-if="nayobCount < 2 && !showText" src="https://media.giphy.com/media/cklPOHnHepdwBLRnQp/giphy.gif" />
       <span style="display: block; margin-bottom: 1rem" v-if="nayobCount === 1 && showText">Для особо одаренных - одна кнопка)</span>
       <div v-if="showInput">
-        <input v-model="code" />
+        <input style="padding: 1rem 2rem; font-size: 1rem" v-model="code" />
       </div>
       <div style="margin-top: 1rem" v-if="showText || nayobCount === 2">
         <button class="btn" style="margin-right: 0.5rem" v-if="nayobCount === 0" @click="daliClick">Далі</button>
@@ -14,7 +15,9 @@
       </div>
     </div>
     <div v-if="success" class="block">
-      <h1>Вітаю!</h1>
+      <h1>Вітаю)</h1>
+      <p v-if="envy">Досі не знаєш, що відбувається? Ок. тримай...</p>
+      <img src="https://media.giphy.com/media/9YlhdI9SSP0Qw/giphy.gif" />
     </div>
   </div>
 </template>
@@ -35,12 +38,13 @@
         success: false,
         text: '',
         code: '',
+        envy: false,
         nayobCount: 0,
       }
     },
     methods: {
       countDownTimer() {
-        if(this.countDown !== 45) {
+        if(this.countDown !== 3) {
           setTimeout(() => {
             this.showText = false;
             this.countDown += 1
@@ -65,9 +69,13 @@
         } else if (this.nayobCount === 2) {
           if (this.code === 'zth1VtW138b00bRGCTsSk') {
             this.success = true;
+            window.scrollTo(0, 0);
+            setTimeout(() => {
+              this.envy = true;
+            }, 5000)
             setTimeout(() => {
               window.location.href = '/certificate.pdf'
-            }, 3000)
+            }, 8000)
           } else {
             window.alert('Уви, давай з початку. Не можу бути впевненим, що це справді ти')
             window.location.reload();
