@@ -7,7 +7,7 @@
       <img style="width: 320px" v-if="nayobCount < 2 && !showText" src="https://media.giphy.com/media/cklPOHnHepdwBLRnQp/giphy.gif" />
       <span style="display: block; margin-bottom: 1rem" v-if="nayobCount === 1 && showText">Для особо одаренных - одна кнопка)</span>
       <div v-if="showInput">
-        <input style="padding: 1rem 2rem; font-size: 1rem" v-model="code" />
+        <input type="password" style="padding: 1rem 2rem; font-size: 1rem" v-model="code" />
       </div>
       <div style="margin-top: 1rem" v-if="showText || nayobCount === 2">
         <button class="btn" style="margin-right: 0.5rem" v-if="nayobCount === 0" @click="daliClick">Далі</button>
